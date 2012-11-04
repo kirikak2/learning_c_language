@@ -1,0 +1,23 @@
+<%= form_for(@answer, :html => { :multipart => true }) do |f| %>
+  <p>select question</p>
+  <%= f.select :question_id, Question.all.map{|x| [x.title, x.id] } %>
+  <p>post answer</p>
+  <%= f.text_area :answer %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>post answer from file</p>
+  <%= file_field_tag :source_file %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

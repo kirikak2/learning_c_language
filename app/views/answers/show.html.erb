@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h2>your code</h2>
+<pre>
+<%= @answer.answer %>
+</pre>
+
+<h2>results</h2>
+<% @answer.results.each_with_index do |result, index| %>
+  <li>example <%= index + 1 %> …… <%= result.result %></li>
+<% end %>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>
